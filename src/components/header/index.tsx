@@ -6,9 +6,9 @@ export function Header() {
   const { toggleTheme, theme } = useTheme();
 
   return (
-    <header className="w-full shadow-md z-10">
+    <header className="w-full bg-base-100 shadow-md z-10">
       <div className="container">
-        <div className="navbar px-0 bg-base-100">
+        <div className="navbar px-0">
           <div className="flex-1">
             <h1 className="text-xl font-semibold">
               IBGE CE - Estatísticas
