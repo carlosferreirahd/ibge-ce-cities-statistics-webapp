@@ -6,8 +6,13 @@ export default {
   ],
   theme: {
     extend: {},
+    container: {
+      center: true,
+      padding: "1rem",
+    }
   },
   plugins: [
     require('daisyui'),
   ],
+  darkMode: ['selector', '[data-theme="dark"]'],
 }
