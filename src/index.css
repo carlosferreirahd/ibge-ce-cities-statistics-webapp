@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .bottom-line {
+    @apply relative
+      pb-[5px]
+      before:content-['']
+      before:w-7
+      before:h-[5px]
+      before:block
+      before:absolute
+      before:bottom-[4px]
+      before:left-1/2
+      before:-ml-[14px]
+      before:bg-primary
+      after:content-['']
+      after:w-[100px]
+      after:h-0.5
+      after:block
+      after:relative
+      after:left-1/2
+      after:-ml-[50px]
+      after:bg-primary;
+  }
+}
