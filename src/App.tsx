@@ -1,21 +1,25 @@
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@/context/theme";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import Routes from "./routes";
 
 function App() {
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <div className="flex-1 flex">
-          <div className="container py-8">
-            app content
+    <BrowserRouter>
+      <ThemeProvider>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <div className="flex-1 flex">
+            <main className="container py-8">
+              <Routes />
+            </main>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
