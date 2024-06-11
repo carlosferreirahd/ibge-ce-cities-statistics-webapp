@@ -1,6 +1,9 @@
+import { useTheme } from "@/context/theme";
 import { MoonIcon, SunIcon } from "@/components/icons";
 
 export function Header() {
+
+  const { toggleTheme, theme } = useTheme();
 
   return (
     <header className="w-full shadow-md z-10">
@@ -21,7 +24,9 @@ export function Header() {
                 id="theme-switch"
                 className="theme-controller"
                 type="checkbox"
+                checked={theme === "light"}
                 aria-label="Alternar entre temas claro e escuro"
+                onChange={toggleTheme}
               />
               <SunIcon
                 className="swap-on fill-current size-7"
