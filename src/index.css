@@ -5,23 +5,20 @@
 @layer utilities {
   .bottom-line {
     @apply relative
-      pb-[5px]
-      before:content-['']
-      before:w-7
-      before:h-[5px]
-      before:block
-      before:absolute
-      before:bottom-[4px]
-      before:left-1/2
-      before:-ml-[14px]
-      before:bg-primary
-      after:content-['']
-      after:w-[100px]
-      after:h-0.5
-      after:block
-      after:relative
-      after:left-1/2
-      after:-ml-[50px]
-      after:bg-primary;
+    after:content-['']
+    after:absolute
+    after:top-full
+    after:bottom-0
+    after:left-0
+    after:w-full
+    after:h-full
+    after:bg-contain
+    after:bg-no-repeat
+    after:bg-[url('@/assets/background-line.svg')];
+  }
+
+  .bottom-line svg {
+    display: flex;
+    width: 100%;
   }
 }

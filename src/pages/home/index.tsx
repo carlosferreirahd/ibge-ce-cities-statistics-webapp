@@ -8,8 +8,8 @@ export function Home() {
         <div className="hero-content flex-col gap-8 lg:flex-row">
           <img
             src={ceImg}
-            className="max-w-sm hidden lg:block"
-            width={180}
+            className="max-w-sm hidden lg:block shrink-0"
+            width={160}
           />
           <div className="max-w-2xl">
             <h2 className="text-base-content text-4xl font-bold">
