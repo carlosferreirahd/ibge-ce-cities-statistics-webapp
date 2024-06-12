@@ -1,3 +1,4 @@
+import { CitiesList } from "@/components/cities-list";
 import ceImg from "@/assets/ce.png";
 
 export function Home() {
@@ -26,6 +27,9 @@ export function Home() {
             </p>
           </div>
         </div>
+      </div>
+      <div className="mt-12 p-6 lg:mt-28">
+        <CitiesList />
       </div>
     </section>
   );
