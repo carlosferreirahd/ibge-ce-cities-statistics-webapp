@@ -12,6 +12,7 @@
     after:left-0
     after:w-full
     after:h-full
+    after:pointer-events-none
     after:bg-contain
     after:bg-no-repeat
     after:bg-[url('@/assets/background-line.svg')];
