@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { useTheme } from "@/context/theme";
 import { MoonIcon, SunIcon } from "@/components/icons";
+import ceImg from "@/assets/ce.png";
 
 export function Header() {
 
@@ -10,9 +12,17 @@ export function Header() {
       <div className="container">
         <div className="navbar px-0">
           <div className="flex-1">
-            <h1 className="text-xl font-semibold">
-              IBGE CE - Estatísticas
-            </h1>
+            <Link className="btn btn-ghost" to="/">
+              <h1 className="text-xl font-semibold">
+                <img
+                  src={ceImg}
+                  alt="Image Brasão do Ceará"
+                  className="inline-block lg:hidden"
+                  width={24}
+                /> {" "}
+                IBGE CE - Estatísticas
+              </h1>
+            </Link>
           </div>
           <div className="flex-none">
             <label
