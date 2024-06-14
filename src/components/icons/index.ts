@@ -8,3 +8,5 @@ export { XCircleIcon } from "./x-circle";
 export { LocationIcon } from "./location";
 export { MagnifyIcon } from "./magnify";
 export { EmptyIcon } from "./empty";
+export { ChevronRightIcon } from "./chevron-right";
+export { ChevronLeftIcon } from "./chevron-left";
