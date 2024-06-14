@@ -1,14 +1,10 @@
-import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Fuse from "fuse.js";
-import debounce from "lodash.debounce";
 import { useCities } from "@/hooks/use-cities";
+import { useSearch } from "@/hooks/use-search";
 import { EmptyIcon, LocationIcon, MagnifyIcon, XCircleIcon } from "@/components/icons";
 import { ICity } from "@/shared/types/services.interfaces";
 
 export function CitiesList() {
-
-  const [search, setSearch] = useState<string>("");
 
   const {
     data,
@@ -17,22 +13,12 @@ export function CitiesList() {
     error
   } = useCities();
 
-  const fuseSearcher = useMemo<Fuse<ICity>>(
-    () => new Fuse(data ?? [], {
+  const { searchResults, updateSearch } = useSearch<ICity>(
+    data ?? [],
+    {
       keys: ["id", "nome"],
       threshold: 0.3
-    }),
-    [data]
-  );
-
-  const filteredData = useMemo<Array<ICity>>(() => {
-    if (!search) return data ?? [];
-    return fuseSearcher.search(search).map(r => r.item);
-  }, [data, fuseSearcher, search]);
-
-  const handleSearch = useMemo(
-    () => debounce((searchText: string) => setSearch(searchText), 300),
-    []
+    }
   );
 
   if (isPending) {
@@ -73,13 +59,13 @@ export function CitiesList() {
             type="text"
             name="city-search"
             placeholder="Pesquise por municípios..."
-            onChange={(e) => handleSearch(e.target.value)}
+            onChange={(e) => updateSearch(e.target.value)}
           />
           <MagnifyIcon className="size-4" strokeWidth={2} />
         </label>
       </form>
       <div className="w-full mt-8">
-        <List citiesList={filteredData} />
+        <List citiesList={searchResults} />
       </div>
     </div >
   );
