@@ -93,7 +93,7 @@ function List({
 
   if (citiesList?.length === 0) {
     return (
-      <div className="flex flex-col gap-4 items-center justify-center">
+      <div className="flex flex-col gap-4 items-center justify-center border-t pt-8">
         <EmptyIcon className="size-16" strokeWidth={2} />
         <h3 className="text-xl font-semibold">
           Nenhum município encontrado
