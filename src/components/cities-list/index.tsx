@@ -1,8 +1,14 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import Fuse from "fuse.js";
+import debounce from "lodash.debounce";
 import { useCities } from "@/hooks/use-cities";
 import { LocationIcon, MagnifyIcon, XCircleIcon } from "@/components/icons";
+import { ICity } from "@/shared/types/services.interfaces";
 
 export function CitiesList() {
+
+  const [search, setSearch] = useState<string>("");
 
   const {
     data,
@@ -10,6 +16,24 @@ export function CitiesList() {
     isError,
     error
   } = useCities();
+
+  const fuseSearcher = useMemo<Fuse<ICity>>(
+    () => new Fuse(data ?? [], {
+      keys: ["id", "nome"],
+      threshold: 0.3
+    }),
+    [data]
+  );
+
+  const filteredData = useMemo<Array<ICity>>(() => {
+    if (!search) return data ?? [];
+    return fuseSearcher.search(search).map(r => r.item);
+  }, [data, fuseSearcher, search]);
+
+  const handleSearch = useMemo(
+    () => debounce((searchText: string) => setSearch(searchText), 300),
+    []
+  );
 
   if (isPending) {
     return (
@@ -38,19 +62,24 @@ export function CitiesList() {
 
   return (
     <div className="w-full h-full">
-      <form className="form-control w-full max-w-md mb-6">
-        <label className="input input-bordered flex items-center gap-2">
+      <form
+        className="form-control w-full max-w-md mb-6"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <label className="input input-bordered flex items-center gap-2 focus-within:input-primary">
           <LocationIcon className="size-4" />
           <input
             className="grow"
             type="text"
+            name="city-search"
             placeholder="Pesquise por municípios..."
+            onChange={(e) => handleSearch(e.target.value)}
           />
           <MagnifyIcon className="size-4" strokeWidth={2} />
         </label>
       </form>
       <ul className="min-w-0 flex flex-row flex-wrap justify-center gap-y-6 -mx-3">
-        {data?.map((city) => (
+        {filteredData.map((city) => (
           <li
             key={city.id}
             className="
@@ -70,7 +99,10 @@ export function CitiesList() {
                   #{city.id}
                 </p>
                 <div className="card-actions justify-end">
-                  <Link to={`/cidade/${city.id}`} className="btn btn-sm btn-outline btn-primary">
+                  <Link
+                    to={`/cidade/${city.id}`}
+                    className="btn btn-sm btn-outline btn-primary"
+                  >
                     Detalhes
                   </Link>
                 </div>
