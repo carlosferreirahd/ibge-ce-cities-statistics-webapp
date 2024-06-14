@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Fuse from "fuse.js";
 import debounce from "lodash.debounce";
 import { useCities } from "@/hooks/use-cities";
-import { LocationIcon, MagnifyIcon, XCircleIcon } from "@/components/icons";
+import { EmptyIcon, LocationIcon, MagnifyIcon, XCircleIcon } from "@/components/icons";
 import { ICity } from "@/shared/types/services.interfaces";
 
 export function CitiesList() {
@@ -78,39 +78,63 @@ export function CitiesList() {
           <MagnifyIcon className="size-4" strokeWidth={2} />
         </label>
       </form>
-      <ul className="min-w-0 flex flex-row flex-wrap justify-center gap-y-6 -mx-3">
-        {filteredData.map((city) => (
-          <li
-            key={city.id}
-            className="
+      <div className="w-full mt-8">
+        <List citiesList={filteredData} />
+      </div>
+    </div >
+  );
+}
+
+function List({
+  citiesList
+}: {
+  citiesList: Array<ICity>
+}) {
+
+  if (citiesList?.length === 0) {
+    return (
+      <div className="flex flex-col gap-4 items-center justify-center">
+        <EmptyIcon className="size-16" strokeWidth={2} />
+        <h3 className="text-xl font-semibold">
+          Nenhum município encontrado
+        </h3>
+      </div>
+    );
+  }
+
+  return (
+    <ul className="min-w-0 flex flex-row flex-wrap justify-center gap-y-6 -mx-3">
+      {citiesList?.map((city) => (
+        <li
+          key={city.id}
+          className="
               flex-grow-0 flex-shrink-0 px-3 basis-full max-w-full
               sm:basis-1/2 sm:max-w-[50%]
               lg:basis-1/3 lg:max-w-[33.333333%]
               xl:basis-1/4 xl:max-w-[25%]
               2xl:basis-1/5 2xl:max-w-[20%]
             "
-          >
-            <div className="card card-compact bg-base-200 shadow-lg h-full">
-              <div className="card-body justify-between">
-                <h3 className="card-title items-start">
-                  <LocationIcon className="size-6 shrink-0 inline-block align-middle" /> {city.nome}
-                </h3>
-                <p>
-                  #{city.id}
-                </p>
-                <div className="card-actions justify-end">
-                  <Link
-                    to={`/cidade/${city.id}`}
-                    className="btn btn-sm btn-outline btn-primary"
-                  >
-                    Detalhes
-                  </Link>
-                </div>
+        >
+          <div className="card card-compact bg-base-200 shadow-lg h-full">
+            <div className="card-body justify-between">
+              <h3 className="card-title items-start">
+                <LocationIcon className="size-6 shrink-0 inline-block align-middle" /> {city.nome}
+              </h3>
+              <p>
+                #{city.id}
+              </p>
+              <div className="card-actions justify-end">
+                <Link
+                  to={`/cidade/${city.id}`}
+                  className="btn btn-sm btn-outline btn-primary"
+                >
+                  Detalhes
+                </Link>
               </div>
             </div>
-          </li>
-        ))}
-      </ul>
-    </div >
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 }
