@@ -7,3 +7,4 @@ export { HeartIcon } from "./heart";
 export { XCircleIcon } from "./x-circle";
 export { LocationIcon } from "./location";
 export { MagnifyIcon } from "./magnify";
+export { EmptyIcon } from "./empty";
