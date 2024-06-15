@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCities } from "@/hooks/use-cities";
 import { useSearch } from "@/hooks/use-search";
+import { usePagination } from "@/hooks/use-pagination";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -84,7 +85,15 @@ function List({
   citiesList: Array<ICity>
 }) {
 
-  if (citiesList?.length === 0) {
+  const {
+    paginatedData,
+    currentPage,
+    maxPage,
+    next,
+    previous
+  } = usePagination(citiesList);
+
+  if (paginatedData?.length === 0) {
     return (
       <div className="flex flex-col gap-4 items-center justify-center border-t pt-8">
         <EmptyIcon className="size-16" strokeWidth={2} />
@@ -98,7 +107,7 @@ function List({
   return (
     <div className="flex flex-col gap-10">
       <ul className="min-w-0 flex flex-row flex-wrap justify-center gap-y-6 -mx-3">
-        {citiesList?.map((city) => (
+        {paginatedData?.map((city) => (
           <li
             key={city.id}
             className="
@@ -134,6 +143,8 @@ function List({
         <button
           className="join-item btn"
           aria-label="Ir para a página anterior"
+          disabled={currentPage === 1}
+          onClick={previous}
         >
           <ChevronLeftIcon
             className="size-4"
@@ -141,11 +152,13 @@ function List({
           />
         </button>
         <div className="join-item btn">
-          Page 22
+          Página {currentPage}
         </div>
         <button
           className="join-item btn"
           aria-label="Ir para a próxima página"
+          disabled={currentPage === maxPage}
+          onClick={next}
         >
           <ChevronRightIcon
             className="size-4"
