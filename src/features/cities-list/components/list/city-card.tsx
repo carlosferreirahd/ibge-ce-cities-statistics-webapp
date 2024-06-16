@@ -21,7 +21,7 @@ export function CityCard({
         </p>
         <div className="card-actions justify-end">
           <Link
-            to={`cidade/${city.id}`}
+            to={`/cidade/${city.id}`}
             className="btn btn-sm btn-outline btn-primary"
           >
             Detalhes

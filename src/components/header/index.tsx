@@ -12,7 +12,7 @@ export function Header() {
       <div className="container">
         <div className="navbar px-0">
           <div className="flex-1">
-            <Link className="btn btn-ghost" to="/">
+            <Link className="btn btn-ghost" to="/cidades">
               <h1 className="text-xl font-semibold">
                 <img
                   src={ceImg}
