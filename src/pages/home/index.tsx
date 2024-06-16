@@ -1,4 +1,4 @@
-import { CitiesList } from "@/components/cities-list";
+import { CitiesList } from "@/features/cities-list";
 import ceImg from "@/assets/ce.png";
 import backgroundLine from "@/assets/background-line.svg";
 
