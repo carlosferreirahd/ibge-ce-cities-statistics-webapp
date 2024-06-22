@@ -12,7 +12,7 @@ export function Home() {
             src={ceImg}
             alt="Image Brasão do Ceará"
             className="max-w-sm hidden lg:block shrink-0"
-            width={160}
+            width={144}
           />
           <div className="max-w-2xl">
             <h2 className="text-base-content text-4xl font-bold">
@@ -33,7 +33,7 @@ export function Home() {
       <img
         src={backgroundLine}
         alt="Imagem separador"
-        className="rounded-bl-md rounded-br-md pointer-events-none"
+        className="rounded-bl rounded-br pointer-events-none"
         width="100%"
         role="separator"
       />
