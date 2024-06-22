@@ -10,3 +10,5 @@ export { MagnifyIcon } from "./magnify";
 export { EmptyIcon } from "./empty";
 export { ChevronRightIcon } from "./chevron-right";
 export { ChevronLeftIcon } from "./chevron-left";
+export { InfoIcon } from "./info";
+export { ArrowLeftIcon } from "./arrow-left";
