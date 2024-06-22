@@ -1,7 +1,6 @@
-import { Skeleton } from "./components/skeleton";
-import { Error } from "./components/error";
 import { SearchForm } from "./components/search-form.tsx";
 import { List } from "./components/list/index.tsx";
+import { FetchError } from "@/components/fetch-error/index.tsx";
 import { useCities } from "@/hooks/use-cities";
 import { useSearch } from "@/hooks/use-search";
 import { ICity } from "@/shared/types/services.interfaces";
@@ -23,9 +22,23 @@ export function CitiesList() {
     }
   );
 
-  if (isPending) return <Skeleton />;
+  if (isPending) {
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="skeleton h-8 w-1/3" />
+        <div className="skeleton h-32" />
+      </div>
+    );
+  }
 
-  if (isError) return <Error title="Erro ao buscar cidades" message={error?.message} />;
+  if (isError) {
+    return (
+      <FetchError
+        title="Erro ao buscar cidades"
+        message={error?.message}
+      />
+    );
+  }
 
   return (
     <div className="flex flex-col gap-14">

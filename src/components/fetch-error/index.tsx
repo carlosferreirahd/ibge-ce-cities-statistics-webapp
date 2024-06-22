@@ -1,14 +1,14 @@
 import { XCircleIcon } from "@/components/icons";
 
-interface ErrorProps {
+interface FetchErrorProps {
   title: string;
   message: string;
 }
 
-export function Error({
+export function FetchError({
   title,
   message,
-}: ErrorProps) {
+}: FetchErrorProps) {
 
   return (
     <div role="alert" className="alert alert-error shadow-lg max-w-lg mx-auto">
