@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FetchError } from "@/components/fetch-error";
+import { ChartsTabs } from "@/features/charts-tabs";
 import { ArrowLeftIcon, InfoIcon } from "@/components/icons";
 import { useCities } from "@/hooks/use-cities";
 import { ICity } from "@/shared/types/services.interfaces";
@@ -23,10 +24,12 @@ export function City() {
 
   if (isPending) {
     return (
-      <div className="flex flex-col gap-4 h-full">
-        <div className="skeleton h-10 w-60" />
-        <div className="skeleton h-10 w-40" />
-        <div className="skeleton h-full" />
+      <div className="flex gap-4">
+        <div className="skeleton h-10 w-10" />
+        <div className="flex flex-col gap-4">
+          <div className="skeleton h-10 w-60" />
+          <div className="skeleton h-10 w-40" />
+        </div>
       </div>
     );
   }
@@ -79,6 +82,9 @@ export function City() {
             </p>
           </div>
         </div>
+      </div>
+      <div className="mt-8">
+        <ChartsTabs cityId={currentCity.id} />
       </div>
     </section>
   );
