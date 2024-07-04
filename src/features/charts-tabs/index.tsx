@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs } from "@/components/tabs";
+import { PopulationChart } from "./components/population-chart";
 
 interface ChartsTabsProps {
   cityId: number;
@@ -20,7 +21,7 @@ export function ChartsTabs({
         isActive={currentTab === "population-tab"}
         onTabClick={() => setCurrentTab("population-tab")}
       >
-        população
+        <PopulationChart cityId={cityId} />
       </Tabs.Tab>
       <Tabs.Tab
         title="Alfabetização"

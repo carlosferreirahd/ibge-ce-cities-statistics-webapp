@@ -83,7 +83,7 @@ export function City() {
           </div>
         </div>
       </div>
-      <div className="mt-8">
+      <div className="mt-8 overflow-x-auto">
         <ChartsTabs cityId={currentCity.id} />
       </div>
     </section>
