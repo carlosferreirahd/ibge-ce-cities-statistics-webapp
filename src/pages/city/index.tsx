@@ -63,7 +63,7 @@ export function City() {
   }
 
   return (
-    <section className="w-full h-full">
+    <section className="w-full h-full animate-fade animate-once">
       <div className="hero place-items-start">
         <div className="hero-content flex-row">
           <Link

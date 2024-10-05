@@ -41,7 +41,7 @@ export function CitiesList() {
   }
 
   return (
-    <div className="flex flex-col gap-14">
+    <div className="flex flex-col gap-14 animate-fade animate-once">
       <div className="max-w-md">
         <SearchForm onInputChange={updateSearch} />
       </div>

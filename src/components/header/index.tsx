@@ -10,7 +10,7 @@ export function Header() {
   return (
     <header className="w-full bg-base-100 shadow-md z-10">
       <div className="container">
-        <div className="navbar px-0">
+        <div className="navbar px-0 animate-fade animate-once">
           <div className="flex-1">
             <Link className="btn btn-ghost" to="/cidades">
               <h1 className="text-xl font-semibold">

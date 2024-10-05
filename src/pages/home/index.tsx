@@ -5,7 +5,7 @@ import backgroundLine from "@/assets/background-line.svg";
 export function Home() {
 
   return (
-    <section className="w-full h-full">
+    <section className="w-full h-full animate-fade animate-once">
       <div className="hero place-items-start">
         <div className="hero-content flex-col gap-8 lg:flex-row">
           <img
