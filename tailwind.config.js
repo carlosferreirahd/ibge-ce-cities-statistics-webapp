@@ -13,6 +13,7 @@ export default {
   },
   plugins: [
     require('daisyui'),
+    require('tailwindcss-animated')
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
 }
