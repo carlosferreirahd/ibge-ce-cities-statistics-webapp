@@ -2,6 +2,7 @@ import api from "@/services/api";
 import { AxiosResponse } from "axios";
 import {
   ICity,
+  IGDP,
   ILiteracy,
   IPopulation,
 } from "@/shared/types/services.interfaces";
@@ -40,10 +41,22 @@ function service() {
     }
   }
 
+  async function getGDP(cityId: number): Promise<Array<IGDP>> {
+    try {
+      const response: AxiosResponse<Array<IGDP>> = await api.get<Array<IGDP>>(
+        `/pib/${cityId}`
+      );
+      return response.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
   return {
     getCities,
     getPopulation,
     getLiteracy,
+    getGDP,
   };
 }
 
