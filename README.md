@@ -1,30 +1,77 @@
-# React + TypeScript + Vite
+# IBGE Cities Statistics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a straightforward exploration of the Brazilian IBGE API, designed to help (us) understand how it works. It was originally created by my friend [Alcides](https://github.com/srcid) as a Python API that interacts with the IBGE API for a job challenge. I decided to build on his work by using his API to develop this simple yet functional React web app 😄.
 
-Currently, two official plugins are available:
+This web app lets you search for cities in the state of Ceará and view data such as population, literacy rates, and GDP trends over the years, as available from the IBGE API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Homepage](https://github.com/carlosferreirahd/ibge-ce-cities-statistics-webapp/blob/main/readme/home.png?raw=true)
 
-## Expanding the ESLint configuration
+![Population](https://github.com/carlosferreirahd/ibge-ce-cities-statistics-webapp/blob/main/readme/population.png?raw=true)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![Literacy](https://github.com/carlosferreirahd/ibge-ce-cities-statistics-webapp/blob/main/readme/literacy.png?raw=true)
 
-- Configure the top-level `parserOptions` property like this:
+![GDP](https://github.com/carlosferreirahd/ibge-ce-cities-statistics-webapp/blob/main/readme/gdp.png?raw=true)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Installation and Setup
+
+To run this project locally, follow these steps:
+
+1. **Clone the API repository and run it**:
+
+Clone the [original Python API](https://github.com/srcid/insight-python) made by [Alcides](https://github.com/srcid), and run it using `Docker`.
+
+```sh
+git clone https://github.com/srcid/insight-python
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```sh
+cd insight-python
+```
+
+```sh
+docker compose up
+```
+
+2. **Clone this repository and run it**:
+
+Clone this React webapp, install the dependencies and start the development server.
+
+```sh
+git clone https://github.com/carlosferreirahd/ibge-ce-cities-statistics-webapp.git
+```
+
+```sh
+cd ibge-ce-cities-statistics-webapp
+```
+
+```sh
+npm install
+```
+
+```sh
+npm run dev
+```
+
+3. **Check the application**:
+
+Open your browser and go to `http://localhost:5173` to see the application running.
+
+## Technologies Used
+
+- **React**;
+- **TypeScript**;
+- **Vite**;
+- **[Tailwind CSS](https://tailwindcss.com/)**;
+- **[tailwind-animated](https://github.com/new-data-services/tailwindcss-animated)**;
+- **[daisyUI](https://daisyui.com/)**;
+- **[fuse.js](https://github.com/krisk/fuse)**;
+- **[Chart.js](https://github.com/chartjs/Chart.js)**;
+- **[TanStack Query](https://tanstack.com/query/latest)**;
+
+## Features
+
+- [x] **List and Search Ceará Cities**;
+- [x] **Population Growth Graph over the years**;
+- [x] **Literacy Rates Graph over the years**;
+- [x] **GDP Trends Graph over the years**;
+- [x] **Light and Dark Themes**;
