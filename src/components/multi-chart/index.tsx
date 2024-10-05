@@ -51,6 +51,7 @@ export function MultiChart({
         type: "bar" as const,
         data: values,
         backgroundColor: "#7480FF",
+        maxBarThickness: 32,
       }
     ],
   }), [labels, values]);
