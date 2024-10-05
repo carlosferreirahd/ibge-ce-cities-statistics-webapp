@@ -1,6 +1,10 @@
 import api from "@/services/api";
 import { AxiosResponse } from "axios";
-import { ICity, IPopulation } from "@/shared/types/services.interfaces";
+import {
+  ICity,
+  ILiteracy,
+  IPopulation,
+} from "@/shared/types/services.interfaces";
 
 function service() {
   async function getCities(): Promise<Array<ICity>> {
@@ -25,9 +29,21 @@ function service() {
     }
   }
 
+  async function getLiteracy(cityId: number): Promise<Array<ILiteracy>> {
+    try {
+      const response: AxiosResponse<Array<ILiteracy>> = await api.get<
+        Array<ILiteracy>
+      >(`/alfabetizacao/${cityId}`);
+      return response.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
   return {
     getCities,
     getPopulation,
+    getLiteracy,
   };
 }
 
