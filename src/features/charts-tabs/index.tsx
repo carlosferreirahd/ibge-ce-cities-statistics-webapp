@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tabs } from "@/components/tabs";
 import { PopulationChart } from "./components/population-chart";
 import { LiteracyChart } from "./components/literacy-chart";
+import { GDPChart } from "./components/gdp-chart";
 
 interface ChartsTabsProps {
   cityId: number;
@@ -36,7 +37,7 @@ export function ChartsTabs({
         isActive={currentTab === "gdp-tab"}
         onTabClick={() => setCurrentTab("gdp-tab")}
       >
-        PIB
+        <GDPChart cityId={cityId} />
       </Tabs.Tab>
     </Tabs>
   );
